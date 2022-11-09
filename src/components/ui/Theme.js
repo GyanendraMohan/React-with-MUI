@@ -16,4 +16,9 @@ export default createTheme({
       main: `${gpOrange}`,
     },
   },
+  typography: {
+    h3: {
+      fontWeight: 300,
+    },
+  },
 });

@@ -3,6 +3,7 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import PropTypes from "prop-types";
+import Typography from "@mui/material/Typography";
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -30,7 +31,9 @@ const Header = () => {
   return (
     <ElevationScroll>
       <AppBar position="fixed" color="primary">
-        <Toolbar>GP Development Ltd</Toolbar>
+        <Toolbar>
+          <Typography variant="h3">Gp Development Ltd</Typography>
+        </Toolbar>
       </AppBar>
     </ElevationScroll>
   );
