@@ -2,8 +2,9 @@ import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
-import PropTypes from "prop-types";
-import Typography from "@mui/material/Typography";
+
+import logo from "../../assets/logo.svg";
+import { makeStyles, createStyles } from "@mui/styles";
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -18,25 +19,35 @@ function ElevationScroll(props) {
   });
 }
 
-ElevationScroll.propTypes = {
-  children: PropTypes.element.isRequired,
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window: PropTypes.func,
-};
+// ElevationScroll.propTypes = {
+//   children: PropTypes.element.isRequired,
 
-const Header = () => {
+//   window: PropTypes.func,
+// };
+
+const useStyles = makeStyles((theme) =>
+  createStyles({
+    toolbarMargin: {
+      ...theme.mixins.toolbar,
+    },
+    logo: {
+      height: "8em",
+    },
+  })
+);
+
+export default function Header(props) {
+  const classes = useStyles();
   return (
-    <ElevationScroll>
-      <AppBar position="fixed" color="primary">
-        <Toolbar>
-          <Typography variant="h3">Gp Development Ltd</Typography>
-        </Toolbar>
-      </AppBar>
-    </ElevationScroll>
+    <>
+      <ElevationScroll>
+        <AppBar position="fixed" color="primary">
+          <Toolbar disableGutters>
+            <img alt="company logo" src={logo} className={classes.logo} />
+          </Toolbar>
+        </AppBar>
+      </ElevationScroll>
+      <div className={classes.toolbarMargin} />
+    </>
   );
-};
-
-export default Header;
+}
