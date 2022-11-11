@@ -4,7 +4,10 @@ import Toolbar from "@mui/material/Toolbar";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 
 import logo from "../../assets/logo.svg";
-import { makeStyles, createStyles } from "@mui/styles";
+import { makeStyles } from "@mui/styles";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import { Button } from "@mui/material";
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -25,25 +28,49 @@ function ElevationScroll(props) {
 //   window: PropTypes.func,
 // };
 
-const useStyles = makeStyles((theme) =>
-  createStyles({
-    toolbarMargin: {
-      ...theme.mixins.toolbar,
-    },
-    logo: {
-      height: "8em",
-    },
-  })
-);
+const useStyles = makeStyles((theme) => ({
+  toolbarMargin: {
+    ...theme.mixins.toolbar,
+    marginBottom: "3em",
+  },
+  logo: {
+    height: "7em",
+  },
+  tabContainer: {
+    marginLeft: "auto",
+  },
+  tab: {
+    ...theme.typography.tab,
+  },
+  button: {
+    borderRadius: "50px",
+    marginLeft: "50px",
+    marginRight: "25px",
+  },
+}));
 
 export default function Header(props) {
   const classes = useStyles();
   return (
     <>
       <ElevationScroll>
-        <AppBar position="fixed" color="primary">
+        <AppBar position="fixed">
           <Toolbar disableGutters>
             <img alt="company logo" src={logo} className={classes.logo} />
+            <Tabs className={classes.tabContainer}>
+              <Tab className={classes.tab} label="Home" />
+              <Tab className={classes.tab} label="Services" />
+              <Tab className={classes.tab} label="The Revolution" />
+              <Tab className={classes.tab} label="About Us" />
+              <Tab className={classes.tab} label="Contact Us" />
+            </Tabs>
+            <Button
+              className={classes.button}
+              variant="contained"
+              color="secondary"
+            >
+              Free Eastimate
+            </Button>
           </Toolbar>
         </AppBar>
       </ElevationScroll>
