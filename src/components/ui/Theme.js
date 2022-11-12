@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme } from "@material-ui/core";
 
 const gpBlue = "#0B72B9";
 const gpOrange = "#FFBA60";
